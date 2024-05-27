@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stopwatch</title>
+    <style>
+      body {
+        background-color: lightgray;
+        font: 200;
+        color: aliceblue;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    
+      }
+      .container {
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+      }
+      .hour,
+      .min,
+      .sec {
+        height: 50px;
+        width: 50px;
+        background-color: blueviolet;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 style="margin-left: 167px; order: 1;">Watch live!</h1>
+    <div class="container">
+      <button class="hour"></button>
+      <button class="min"></button>
+      <button class="sec"></button>
+    </div>
+
+    <script>
+      let hourhand = document.querySelector(".hour");
+      let minHand = document.querySelector(".min");
+      let secondHand = document.querySelector(".sec");
+      
+      // document.write('Be Care full') // on the top of web page
+      // console.log('Be Care full man'); // on inspecting the page 
+
+      function tickingTime() {
+        let currendDate = new Date();
+        // console.log(currendDate);
+        hourhand.textContent = currendDate.getHours();
+        minHand.textContent = currendDate.getMinutes();
+        secondHand.textContent = currendDate.getSeconds();
+      }
+
+      setInterval(tickingTime, 1000);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,11 @@
+body{
+    background-color: rgb(134, 245, 245);
+    font: 200;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.success{
+    border: 2px solid green;
+}
+.error{
+    border: 2px solid red;
+}

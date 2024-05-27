@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>XMLHttpRequest</title>
+  </head>
+  <body>
+    <h1>Coder Dost</h1> 
+  </body>
+  <script>
+    // Request URL:https://jsonplaceholder.typicode.com/todos
+    // Request Method:GET
+    // Status Code:200 OK
+    // Remote Address:172.67.167.151:443
+    // Referrer Policy:strict-origin-when-cross-origin
+
+    //Asynchronous Javascript
+
+    //CallBack Function
+
+    let todo = (CallBack) => {
+      //Making HTTP Request (Example)
+      let request = new XMLHttpRequest();
+      // console.log(request , request.readyState);
+
+      request.addEventListener("readystatechange", () => {
+        // console.log(request , request.readyState);
+        if (request.readyState === 4 && request.status == 200) {
+          // console.log(request ,request.responseText); // only Interested here state = 4
+          let data = JSON.parse(request.responseText);
+          CallBack(undefined, data);     //regular JS object
+        } else if (request.readyState === 4) {
+          // console.log('Data could not fetch');
+          CallBack("Data could not fecth", undefined);
+        }
+      });
+
+      //set up the request
+      //   request.open("GET", "https://jsonplaceholder.typicode.com/todos");
+      request.open("GET", "data.json");
+
+      //Sending the request
+      request.send();
+    };
+
+    console.log(1);
+    console.log(2);
+
+    // todo();
+
+    // now passing a function as a functional object inside todo()
+
+    //Asymc Code Example
+    todo((error, data) => {
+      //Will take some time in network call
+      // console.log('Callback Function is fired');
+      if (error) {
+        console.log(error);
+      } else {
+        console.log(data);
+      }
+    });
+
+    console.log(3);
+    console.log(4);
+    //use this link for practice to get JSON data in response
+    //https://jsonplaceholder.typicode.com/users
+
+    // Value  State	    Description
+    // 0	  UNSENT	Client has been created. open() not called yet.
+    // 1	  OPENED	open() has been called.
+    // 2	  HEADERS_RECEIVED	send() has been called, and headers and status are available.
+    // 3	  LOADING	Downloading; responseText holds partial data.
+    // 4	  DONE	    The operation is complete.      //Interested here
+
+    // HTTP response status codes
+    // HTTP response status codes indicate whether a specific HTTP request has been successfully completed. Responses are grouped in five classes:
+
+    // Informational responses (100 – 199)
+    // Successful responses (200 – 299)
+    // Redirection messages (300 – 399)
+    // Client error responses (400 – 499)
+    // Server error responses (500 – 599)
+    // The status codes listed below are defined
+  </script>
+</html>

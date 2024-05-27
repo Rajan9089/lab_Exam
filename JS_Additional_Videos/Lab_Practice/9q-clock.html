@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Digital Clock</title>
+    <style>
+      body {
+        background-color: lightgray;
+        font: 200;
+        color: aliceblue;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+      .container {
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+      }
+      .hour,
+      .min,
+      .sec {
+        height: 50px;
+        width: 50px;
+        background-color: blueviolet;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2 class="hour"></h2>
+      <h2 class="min"></h2>
+      <h2 class="sec"></h2>
+    </div>
+
+    <script>
+      let hourhand = document.querySelector(".hour");
+      let minHand = document.querySelector(".min");
+      let secondHand = document.querySelector(".sec");
+
+      function tickingTime() {
+        let currendDate = new Date();
+        hourhand.textContent = currendDate.getHours();
+        minHand.textContent = currendDate.getMinutes();
+        secondHand.textContent = currendDate.getSeconds();
+      }
+
+      setInterval(tickingTime, 1000);
+    </script>
+  </body>
+</html>
